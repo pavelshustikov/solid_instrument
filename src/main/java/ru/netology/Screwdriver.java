@@ -19,6 +19,6 @@ public class Screwdriver extends Building implements Instrument {
 
     @Override
     public void sale() {
-        System.out.println("Молоток продан");
+        System.out.println("Отвертка продана");
     }
 }
