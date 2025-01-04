@@ -1,6 +1,6 @@
 package ru.netology;
 
-public class Screwdriver extends Building implements Instrument {
+public class Screwdriver extends Building  {
 
     private final String name = "Отвертка";
     private int quantity;
