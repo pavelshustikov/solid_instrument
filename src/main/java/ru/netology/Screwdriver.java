@@ -2,10 +2,14 @@ package ru.netology;
 
 public class Screwdriver extends Building implements Instrument {
 
-    //Open Closed Principle
-
     private final String name = "Отвертка";
-    private final int price = 80;
+    private int quantity;
+    private boolean sold = false;
+    private final int price = 1200;
+
+    public Screwdriver (int quantity) {
+        this.quantity = quantity;
+    }
 
     @Override
     public String toString() {
@@ -17,8 +21,18 @@ public class Screwdriver extends Building implements Instrument {
         return price;
     }
 
-    @Override
-    public void sale() {
-        System.out.println("Отвертка продана");
+    public boolean trySell(int count) {
+
+
+        if(count <= 0) {
+            return false;
+        } else if ( count > quantity) {
+            System.out.println("Недостаточно товара");
+            return false;
+        }
+        quantity -= count;
+        System.out.println("Данного товара осталось: " + quantity);
+
+        return true;
     }
 }
