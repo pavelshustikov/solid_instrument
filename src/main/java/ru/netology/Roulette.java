@@ -1,6 +1,6 @@
 package ru.netology;
 
-public class Roulette extends Building implements Instrument {
+public class Roulette extends Building  {
     private final String name = "Рулетка";
     private final int price = 120;
     private int quantity;
