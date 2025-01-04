@@ -3,6 +3,11 @@ package ru.netology;
 public class Roulette extends Building implements Instrument {
     private final String name = "Рулетка";
     private final int price = 120;
+    private int quantity;
+
+    public Roulette (int quantity) {
+        this.quantity = quantity;
+    }
 
 
     @Override
@@ -15,9 +20,19 @@ public class Roulette extends Building implements Instrument {
         return price;
     }
 
-    @Override
-    public void sale() {
-        System.out.println("Рулетка продана");
 
+    public boolean trySell(int quantity) {
+    
+
+        if(count <= 0) {
+            return false;
+        } else if ( count > this.quantity) {
+            System.out.println("Недостаточно товара");
+            return false;
+        }
+        this.quantity -= count;
+        System.out.println("Данного товара осталось: " + this.quantity);
+
+        return true;
     }
 }
