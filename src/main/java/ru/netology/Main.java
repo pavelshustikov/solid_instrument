@@ -7,8 +7,7 @@ public class Main {
     public static final char RUB = (char) 0x20BD;
 
     public static void main(String[] args) {
-        //Liskov substitution principle
-        Building[] buildings = {new Screwdriver(), new Roulette(), new Hammer(), new Bath()};
+        Building[] buildings = {new Screwdriver(2323),new Roulette(13340)};
         //принцип DRY
         printBuildings(buildings);
         Scanner scanner = new Scanner(System.in);
@@ -18,8 +17,28 @@ public class Main {
             if ("0".equals(input)) break;
             String[] parts = input.split(" ");
             int buildingNumber = Integer.parseInt(parts[0]) - 1;
-            buildings[buildingNumber].setCount(Integer.parseInt(parts[1]));
+            int quantity = Integer.parseInt(parts[1]);
+            if (buildings[buildingNumber] instanceof Screwdriver) {
+                if (quantity > 0) {
+                    buildings[buildingNumber].setCount(quantity);
+                    ((Screwdriver) buildings[buildingNumber]).trySell(quantity);
+                }
+
+            }else {
+                buildings[buildingNumber].setCount(quantity);
+            }
+            if (buildings[buildingNumber] instanceof Roulette) {
+                if (quantity > 0) {
+                    buildings[buildingNumber].setCount(quantity);
+                    ((Roulette) buildings[buildingNumber]).trySell(quantity);
+                }
+            }else {
+                buildings[buildingNumber].setCount(quantity);
+            }
         }
+
+
+
         printBuildings(buildings);
         printBasket(buildings);
     }
